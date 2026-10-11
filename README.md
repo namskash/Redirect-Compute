@@ -17,6 +17,38 @@ redirect-compute config set-provider mac
 redirect-compute run demucs-vocals ~/Music/song.mp3 --output ./song-stems
 ```
 
+## Provider config
+
+`set-provider` saves which SSH alias should be used as the Mac provider.
+
+Example:
+
+```bash
+PYTHONPATH=src python -m redirect_compute.cli config set-provider mac
+```
+
+This writes a local config file at:
+
+```text
+~/.redirect-compute/config.json
+```
+
+Example contents:
+
+```json
+{
+  "provider": "mac",
+  "remoteScratchDir": "~/redirect-compute/scratch",
+  "transport": "ssh"
+}
+```
+
+After that, future commands know to run provider operations through:
+
+```bash
+ssh mac ...
+```
+
 ## Docs
 
 See `docs/PLAN.md` for the full implementation plan.
