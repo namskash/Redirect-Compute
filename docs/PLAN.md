@@ -7,7 +7,11 @@ Run the same CLI software on two machines on the same WiFi:
 - **Hardware provider**: the Mac that actually runs compute jobs.
 - **Orchestrator**: the machine where I request jobs and receive outputs.
 
-Start simple: trusted LAN, SSH-based execution using a local SSH alias, explicit user-selected provider, local preference file, no sandboxing in v1. SMB + Mac worker remains an optional fallback if SSH becomes unavailable.
+Start simple: trusted LAN, explicit user-selected provider, local preference file, no sandboxing in v1.
+
+Original v1 direction was SSH-based execution using a local SSH alias. In practice, SSH is currently timing out in this environment even with Remote Login enabled and the apparent correct same-WiFi IP. Because that may be caused by firewall, VPN/MDM, router isolation, or local network policy, the active v1 direction is now a Mac-side HTTP runner.
+
+SSH remains documented as a future/fallback transport. See `docs/HTTP_RUNNER_PLAN.md` for the active HTTP runner plan.
 
 ---
 
